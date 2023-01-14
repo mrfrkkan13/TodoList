@@ -13,11 +13,13 @@ function eventListeners(){
     form.addEventListener("submit",addTodo);  
 
 }
+//todo aldım
 function addTodo(e){
     const newTodo=todoInput.value.trim();
     addTodoToUI(newTodo);
     e.preventDefault();
 }
+//arayüze todo ekledim
 function addTodoToUI(newTodo){  
     const listItem=document.createElement("li");
     const link=document.createElement("a");
