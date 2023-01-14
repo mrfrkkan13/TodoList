@@ -16,7 +16,12 @@ function eventListeners(){
 //todo aldım
 function addTodo(e){
     const newTodo=todoInput.value.trim();
-    addTodoToUI(newTodo);
+    if(newTodo == ""){
+        showAlert("danger","lütfen bir todo giriniz...");
+    }else{
+        addTodoToUI(newTodo);
+        showAlert("success","Todo Başarı ile eklendi...");
+    }
     e.preventDefault();
 }
 //arayüze todo ekledim
@@ -32,3 +37,18 @@ function addTodoToUI(newTodo){
     todolist.appendChild(listItem);
     todoInput.value="";
 }
+
+function showAlert(type,mesage){
+    /*<!-- <div class="alert alert-danger" role="alert">
+                        A simple danger alert—check it out!
+      </div> -->*/
+    const alert=document.createElement("div");
+    alert.className=`alert alert-${type}`;
+    alert.textContent=mesage;
+
+    firstCardBody.appendChild(alert);
+    setTimeout(function(){
+        alert.remove();
+    },3000);
+}
+
