@@ -21,7 +21,7 @@ function eventListeners(){
 function filterTodos(e){
     const filterValue=e.target.value.toLowerCase();
     const listItems=document.querySelectorAll(".list-group-item");
-    console.log(e.target);
+    
     
     listItems.forEach(function(listItem){
         const text=listItem.textContent.toLowerCase();
