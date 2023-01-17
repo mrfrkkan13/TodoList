@@ -15,7 +15,17 @@ function eventListeners(){
     document.addEventListener("DOMContentLoaded",loadAllTodosToUI);
     filter.addEventListener("keyup",filterTodos);
     secondCardBody.addEventListener("click",deleteTodo);
+    clearButton.addEventListener("click",clearAllTodos);
 
+}
+
+function clearAllTodos(){
+    if(confirm("tüm taskları silmek istediğinize emin misiniz ?")){
+        while(todolist.firstElementChild != null){
+            todolist.removeChild(todolist.firstElementChild);    
+        }
+        localStorage.removeItem("todos");
+    }
 }
 
 function filterTodos(e){
@@ -30,7 +40,7 @@ function filterTodos(e){
           
         }else{
             listItem.setAttribute("style","display: block");
-      
+    
         }
     });
 }
