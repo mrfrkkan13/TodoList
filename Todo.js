@@ -70,15 +70,33 @@ function loadAllTodosToUI(){
     });
 }
 
+ function isSameTodo(todo){
+     let Bool=false;
+     let todos=document.querySelectorAll(".list-group-item");
+     todoInput.addEventListener("keyup",function(e){
+        let todoInputValue=e.target.value.trim().toLowerCase();
+        todos.forEach(function(todos){
+            if(todos.textContent.trim().toLowerCase() === todoInputValue){
+                return Bool=true;
+            }else
+            return Bool;
+        });
+     });
+
+ }
+
 //todo aldım
 function addTodo(e){
     const newTodo=todoInput.value.trim();
     if(newTodo == ""){
         showAlert("danger","lütfen bir todo giriniz...");
     }else{
+        if(isSameTodo() === false){
         addTodoToUI(newTodo);
         addTodoToLocalstorage(newTodo);
         showAlert("success","Todo Başarı ile eklendi...");
+        }
+        showAlert("danger","aynı adda bir todo var");
     }
     e.preventDefault();
 }
